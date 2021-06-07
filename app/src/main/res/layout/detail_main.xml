@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+<!--    <data>-->
+
+<!--        <variable-->
+<!--            name="viewModel"-->
+<!--            type="com.example.painjournal.main.MainViewModel" />-->
+<!--    </data>-->
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".DetailActivity">
+
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <!--
+            In the above cardview widget
+            cardelevation property will give elevation to your card view
+            card corner radius will provide radius to your card view
+            card background color will give background color to your card view
+            card max elevation will give the cardview maximum elevation
+            card prevent corner overlap will add padding to CardView on v20 and before to prevent intersections between the Card content and rounded corners.
+            card use compact padding will add padding in API v21+ as well to have the same measurements with previous versions.
+            below are the two widgets imageview and text view we are displaying inside our card view.
+            -->
+
+            <RelativeLayout
+                android:id="@+id/painPower_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detail_holder">
+
+                <TextView
+                    android:id="@+id/painTypeLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Pain Type"
+                    android:padding="5sp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/painPower_holder">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Pain Power"
+                    android:textSize="20sp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/description_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/painPower_holder">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:padding="50sp"
+                    android:text="Description of pain a ot of text blalalalalalallalal"
+                    android:textSize="20sp"/>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/date_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                >
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16sp"
+                    android:text="On:"
+                    android:textSize="20sp" />
+
+                <TextView
+
+                    android:id="@+id/painDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="175dp"
+                    android:padding="16sp"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/time_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/date_holder">
+
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16sp"
+                    android:text="At:"
+                    android:textSize="20sp" />
+
+                <TextView
+
+                    android:id="@+id/painTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="175dp"
+                    android:padding="16sp"
+                    android:textSize="20sp" />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/detail_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/time_holder">
+
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16sp"
+                    android:text="I had:"
+                    android:textSize="20sp" />
+
+                <TextView
+
+                    android:id="@+id/painPower"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="175dp"
+                    android:padding="16sp"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+
+            <ImageView
+                android:id="@+id/painTypeImageView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignBottom="@id/detail_holder"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="-1dp"
+                android:layout_marginRight="16dp"
+                android:padding="16sp" />
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</layout>

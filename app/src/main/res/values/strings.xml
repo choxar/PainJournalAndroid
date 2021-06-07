@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Pain Journal</string>
+
+    <string-array name="PainType">
+
+        <item>Choose Pain Type</item>
+        <item>Back-Pain</item>
+        <item>Headache</item>
+        <item>Neck Pain</item>
+        <item>Muscle Pain</item>
+        <item>Stomachache</item>
+        <item>Chest Pain</item>
+        <item>Hip-Pain</item>
+        <item>Joint Pain</item>
+        <item>Nerve Pain</item>
+        <item>Sore throat</item>
+        <item>Other</item>
+
+    </string-array>
+
+    <string-array name="PainPower">
+
+        <item>Choose Pain Power</item>
+        <item>Pain Barable</item>
+        <item>Moderate Pain</item>
+        <item>Serve Pain</item>
+        <item>Very Serve Pain</item>
+        <item>Worst Pain Possible</item>
+
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
+
+    <!--    Pain Barable", "Moderate Pain", "Serve Pain", "Very Serve Pain", "Worst Pain Possible-->

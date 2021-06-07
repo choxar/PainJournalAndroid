@@ -1,0 +1,2 @@
+rootProject.name = "Pain Journal"
+include ':app'
