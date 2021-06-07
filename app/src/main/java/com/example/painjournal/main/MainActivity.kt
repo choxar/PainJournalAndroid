@@ -25,13 +25,13 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
 
 
 
-//        binding.fab.setOnClickListener {
-//
-//            val intent = Intent(this, NewRecordActivity::class.java)
-//
-//            startActivity(intent)
-//
-//        }
+        binding.fab.setOnClickListener {
+
+            val intent = Intent(this, NewRecordActivity::class.java)
+
+            startActivity(intent)
+
+        }
 
 
         //binding.viewModel = viewModel

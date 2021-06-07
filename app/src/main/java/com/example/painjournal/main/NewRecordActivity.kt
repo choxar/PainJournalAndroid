@@ -10,6 +10,8 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.painjournal.databinding.NewMainBinding
+import com.example.painjournal.main.data.PainImageType
+import kotlinx.android.synthetic.main.new_main.*
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -133,7 +135,11 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
 
                         2 -> {
 
-                            binding.painTypeImageView.setImageResource(R.drawable.headache_pain)
+                            //binding.painTypeImageView.setImageResource(R.drawable.headache_pain)
+                            painTypeImageView.setImageResource(PainImageType.HEADACHE.imagePath)
+                            //painTypeImageView.setTag(SAVED_IMAGE, PainImageType.HEADACHE.id)
+                            TestApplication.instance.imageId = PainImageType.HEADACHE.id
+
 
 
                         }
@@ -237,6 +243,7 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
 
             //here add navigation to home screen and save action
             R.id.action_save -> finish()
+
 
 
         }

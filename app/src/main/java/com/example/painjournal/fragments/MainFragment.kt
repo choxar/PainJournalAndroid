@@ -12,12 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.painjournal.R
 import com.example.painjournal.adapters.MainActivityAdapter
 import com.example.painjournal.main.data.RecordViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
 
 class MainFragment : Fragment() {
 
     private lateinit var mRecordViewModel: RecordViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +31,7 @@ class MainFragment : Fragment() {
         val recyclerView = view.recyclerview
         val adapter = MainActivityAdapter()
         recyclerView.adapter = adapter
-        recyclerView.LayoutManager = LinearLayoutManager(requireContext())
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         //Record View Model
 

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.painjournal.R
+import com.example.painjournal.TestApplication
 import com.example.painjournal.main.data.Record
 import com.example.painjournal.main.data.RecordViewModel
 import kotlinx.android.synthetic.main.fragment_new.*
@@ -43,13 +44,13 @@ class NewFragment : Fragment() {
         val painDate = datelabel.text.toString()
         val painTime = timelabel.text.toString()
         val painType = painTypelabel.text.toString()
-        //val painTypeImage = ???
+        val painTypeImage = TestApplication.instance.imageId
         val painPower = painPowerlabel.text.toString()
         val notes = notes.text.toString()
 
-        if (inputCheck(painDate, painTime, painType, painPower, notes)) {
+        if (inputCheck(painDate, painTime, painType, painTypeImage, painPower, notes)) {
 
-            val record = Record(painDate, painTime, painType, painPower, notes)
+            val record = Record(0, painDate, painTime, painType, painTypeImage, painPower, notes)
 
             mRecordViewModel.addRecord(record)
             Toast.makeText(
@@ -73,8 +74,8 @@ class NewFragment : Fragment() {
         painDate: String,
         painTime: String,
         painType: String,
+        painTypeImage: Int,
         painPower: String,
-        //ImageView
         notes: String
     ): Boolean {
 

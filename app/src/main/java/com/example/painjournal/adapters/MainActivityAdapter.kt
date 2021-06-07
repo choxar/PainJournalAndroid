@@ -6,9 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.painjournal.R
 import com.example.painjournal.main.data.Record
-import kotlinx.android.synthetic.main.detail_main.view.*
+import com.example.painjournal.main.data.getPainImageType
+import kotlinx.android.synthetic.main.item_record.view.*
 
 class MainActivityAdapter: RecyclerView.Adapter<MainActivityAdapter.MyViewHolder>() {
+
 
     private var recordsMainActivity = emptyList<Record>()
 
@@ -19,17 +21,21 @@ class MainActivityAdapter: RecyclerView.Adapter<MainActivityAdapter.MyViewHolder
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainActivityAdapter.MyViewHolder {
 
-        return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.activity_main, parent, false))
+        return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_record, parent, false))
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         val currentRecord = recordsMainActivity[position]
-        holder.itemView.painDate.text = recordsMainActivity.painDate.toString()
+//        holder.itemView.painDate.text = recordsMainActivity.painDate.toString()
 //        holder.itemView.painTime.text = recordsMainActivity.painTime.toString()
 //        holder.itemView.painPower.text = recordsMainActivity.PainPower.toString()
 //        holder.itemView.painTypeLabel.text = recordsMainActivity.painType.toString()
 //        holder.itemView.painTypeImageView.text = recordsMainActivity.painTypeImage.toString()
+
+        val painImageType = getPainImageType(currentRecord.painTypeImage)!!
+
+        holder.itemView.item_image.setImageResource(painImageType.imagePath)
 
 
 
