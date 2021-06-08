@@ -6,8 +6,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -16,14 +14,9 @@ import com.example.painjournal.databinding.NewMainBinding
 import com.example.painjournal.main.data.PainImageType
 import com.example.painjournal.main.data.Record
 import com.example.painjournal.main.data.RecordViewModel
-import kotlinx.android.synthetic.main.fragment_new.*
+import kotlinx.android.synthetic.main.detail_main.*
 import kotlinx.android.synthetic.main.new_main.*
-import kotlinx.android.synthetic.main.new_main.datelabel
-import kotlinx.android.synthetic.main.new_main.notes
-import kotlinx.android.synthetic.main.new_main.painPowerlabel
 import kotlinx.android.synthetic.main.new_main.painTypeImageView
-import kotlinx.android.synthetic.main.new_main.painTypelabel
-import kotlinx.android.synthetic.main.new_main.timelabel
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -34,6 +27,7 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
 
     private lateinit var binding: NewMainBinding
     private lateinit var mRecordViewModel: RecordViewModel
+    private lateinit var arrayAdapter: ArrayAdapter<String>
 
 
     var day = 0
@@ -62,8 +56,9 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
             "Serve Pain",
             "Very Serve Pain",
             "Worst Pain Possible"
+
         )
-        val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, painPower)
+        arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, painPower)
         val intent = Intent(this, MainActivity::class.java)
 
 
@@ -74,6 +69,13 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
             //close, go back to the menu
 
             startActivity(intent)
+
+        }
+
+        binding.fab2.setOnClickListener {
+
+            insertDataToDatabase()
+
 
         }
 
@@ -249,35 +251,14 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        var itemView = item.itemId
-
-        when (itemView) {
-
-            //here add navigation to home screen and save action
-            R.id.action_save -> {
-                insertDataToDatabase()
-                finish()
-            }
-
-
-        }
-
-        return false
-    }
 
     private fun insertDataToDatabase() {
         Log.i("test", "test")
-        val painDate = datelabel.text.toString()
-        val painTime = timelabel.text.toString()
-        val painType = painTypelabel.text.toString()
+        val painDate = datePickerEditText.text.toString()
+        val painTime = timePickerEditText.text.toString()
+        val painType = spinnerPainType.selectedItem.toString()
         val painTypeImage = TestApplication.instance.imageId
-        val painPower = painPowerlabel.text.toString()
+        val painPower = spinnerPainPower.selectedItem.toString()
         val notes = notes.text.toString()
 
         if (inputCheck(painDate, painTime, painType, painTypeImage, painPower, notes)) {
@@ -290,7 +271,7 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
                 "Record Successfully added to Journal",
                 Toast.LENGTH_LONG
             ).show()
-//            findNavController().navigate(R.id.action_newFragment_to_mainFragment)
+            finish()
         } else {
 
             Toast.makeText(this, "All fields must be filled in", Toast.LENGTH_LONG)
@@ -307,10 +288,12 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
         painPower: String,
         notes: String
     ): Boolean {
-
-        return !(TextUtils.isEmpty(painDate) && TextUtils.isEmpty(painTime) && TextUtils.isEmpty(
-            painType
-        ) && TextUtils.isEmpty(painPower) && notes.isEmpty())
+        val check = !TextUtils.isEmpty(painDate) && !TextUtils.isEmpty(painTime)
+                && spinnerPainType.selectedItemPosition != 0
+                && spinnerPainPower.selectedItemPosition != 0
+                && notes.isNotEmpty()
+        Log.i("Test", "Test")
+        return check
 
     }
 
