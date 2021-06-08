@@ -66,5 +66,10 @@ class MainActivityAdapter(private val listener: AdapterClickListener) : Recycler
 
     }
 
+fun getRecord(position: Int): Record {
+
+    return recordsMainActivity[position]
+
+}
 
 }
