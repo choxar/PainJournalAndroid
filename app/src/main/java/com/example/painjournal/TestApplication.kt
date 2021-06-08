@@ -3,7 +3,7 @@ package com.example.painjournal
 import android.app.Application
 
 class TestApplication : Application() {
-    var imageId: Int = 0
+    var imageId: Int = 1
     override fun onCreate() {
         super.onCreate()
         // Application instance

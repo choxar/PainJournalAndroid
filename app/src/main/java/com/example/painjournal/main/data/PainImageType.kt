@@ -11,7 +11,13 @@ enum class PainImageType(val id: Int, val imagePath: Int) {
     BACK_PAIN(3, R.drawable.back_pain),
     NECK_PAIN(4, R.drawable.neck_pain),
     MUSCLE_PAIN(5, R.drawable.muscle_pain),
-    STOMATCHACHE(6, R.drawable.stomachache_pain)
+    STOMATCHACHE(6, R.drawable.stomachache_pain),
+    CHEST_PAIN(7, R.drawable.chest_pain),
+    HIP_PAIN(8, R.drawable.hip_pain),
+    JOINT_PAIN(9, R.drawable.joint_pain),
+    NERVE_PAIN(10, R.drawable.nerve_pain),
+    SORE_THROAT(11, R.drawable.sore_throat),
+    OTHER_PAIN(12, R.drawable.other_pain)
 
 
 }

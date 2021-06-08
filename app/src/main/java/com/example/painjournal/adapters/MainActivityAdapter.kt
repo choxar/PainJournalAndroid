@@ -34,8 +34,8 @@ class MainActivityAdapter: RecyclerView.Adapter<MainActivityAdapter.MyViewHolder
 //        holder.itemView.painTypeImageView.text = recordsMainActivity.painTypeImage.toString()
 
         val painImageType = getPainImageType(currentRecord.painTypeImage)!!
-
         holder.itemView.item_image.setImageResource(painImageType.imagePath)
+        holder.itemView.item_text.text = currentRecord.painNotes
 
 
 

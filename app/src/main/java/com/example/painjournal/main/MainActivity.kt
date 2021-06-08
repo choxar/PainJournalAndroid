@@ -20,8 +20,8 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.bottomNavigationView.background = null
-        binding.bottomNavigationView.menu.getItem(1).isEnabled = false
+//        binding.bottomNavigationView.background = null
+//        binding.bottomNavigationView.menu.getItem(1).isEnabled = false
 
 
 

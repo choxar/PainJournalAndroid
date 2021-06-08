@@ -4,14 +4,26 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.painjournal.databinding.NewMainBinding
 import com.example.painjournal.main.data.PainImageType
+import com.example.painjournal.main.data.Record
+import com.example.painjournal.main.data.RecordViewModel
+import kotlinx.android.synthetic.main.fragment_new.*
 import kotlinx.android.synthetic.main.new_main.*
+import kotlinx.android.synthetic.main.new_main.datelabel
+import kotlinx.android.synthetic.main.new_main.notes
+import kotlinx.android.synthetic.main.new_main.painPowerlabel
+import kotlinx.android.synthetic.main.new_main.painTypeImageView
+import kotlinx.android.synthetic.main.new_main.painTypelabel
+import kotlinx.android.synthetic.main.new_main.timelabel
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -21,6 +33,7 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
     TimePickerDialog.OnTimeSetListener {
 
     private lateinit var binding: NewMainBinding
+    private lateinit var mRecordViewModel: RecordViewModel
 
 
     var day = 0
@@ -40,6 +53,7 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
         binding = NewMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        mRecordViewModel = ViewModelProvider(this).get(RecordViewModel::class.java)
 
         val painPower = arrayOf(
             "Choose Power of Pain",
@@ -124,86 +138,90 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
 
                         0 -> {
 
-                            binding.painTypeImageView.setImageResource(R.drawable.other_pain)
+                            painTypeImageView.setImageResource(PainImageType.OTHER.imagePath)
+                            TestApplication.instance.imageId = PainImageType.OTHER.id
 
                         }
                         1 -> {
-
-                            binding.painTypeImageView.setImageResource(R.drawable.back_pain)
+                            painTypeImageView.setImageResource(PainImageType.BACK_PAIN.imagePath)
+                            TestApplication.instance.imageId = PainImageType.BACK_PAIN.id
 
                         }
 
                         2 -> {
 
-                            //binding.painTypeImageView.setImageResource(R.drawable.headache_pain)
                             painTypeImageView.setImageResource(PainImageType.HEADACHE.imagePath)
-                            //painTypeImageView.setTag(SAVED_IMAGE, PainImageType.HEADACHE.id)
                             TestApplication.instance.imageId = PainImageType.HEADACHE.id
-
 
 
                         }
 
                         3 -> {
 
-                            binding.painTypeImageView.setImageResource(R.drawable.neck_pain)
+                            painTypeImageView.setImageResource(PainImageType.NECK_PAIN.imagePath)
+                            TestApplication.instance.imageId = PainImageType.NECK_PAIN.id
 
 
                         }
 
                         4 -> {
 
-                            binding.painTypeImageView.setImageResource(R.drawable.muscle_pain)
+                            painTypeImageView.setImageResource(PainImageType.MUSCLE_PAIN.imagePath)
+                            TestApplication.instance.imageId = PainImageType.MUSCLE_PAIN.id
 
 
                         }
 
                         5 -> {
 
-                            binding.painTypeImageView.setImageResource(R.drawable.stomachache_pain)
+                            painTypeImageView.setImageResource(PainImageType.STOMATCHACHE.imagePath)
+                            TestApplication.instance.imageId = PainImageType.STOMATCHACHE.id
 
 
                         }
 
                         6 -> {
 
-                            binding.painTypeImageView.setImageResource(R.drawable.chest_pain)
+                            painTypeImageView.setImageResource(PainImageType.CHEST_PAIN.imagePath)
+                            TestApplication.instance.imageId = PainImageType.CHEST_PAIN.id
 
 
                         }
 
                         7 -> {
 
-                            binding.painTypeImageView.setImageResource(R.drawable.hip_pain)
+                            painTypeImageView.setImageResource(PainImageType.HIP_PAIN.imagePath)
+                            TestApplication.instance.imageId = PainImageType.HIP_PAIN.id
 
 
                         }
 
                         8 -> {
 
-                            binding.painTypeImageView.setImageResource(R.drawable.joint_pain)
-
+                            painTypeImageView.setImageResource(PainImageType.JOINT_PAIN.imagePath)
+                            TestApplication.instance.imageId = PainImageType.JOINT_PAIN.id
 
                         }
 
                         9 -> {
 
-                            binding.painTypeImageView.setImageResource(R.drawable.nerve_pain)
-
+                            painTypeImageView.setImageResource(PainImageType.NERVE_PAIN.imagePath)
+                            TestApplication.instance.imageId = PainImageType.NERVE_PAIN.id
 
                         }
 
                         10 -> {
 
-                            binding.painTypeImageView.setImageResource(R.drawable.sore_throat)
-
+                            painTypeImageView.setImageResource(PainImageType.SORE_THROAT.imagePath)
+                            TestApplication.instance.imageId = PainImageType.SORE_THROAT.id
 
                         }
 
                         11 -> {
 
-                            binding.painTypeImageView.setImageResource(R.drawable.other_pain)
 
+                            painTypeImageView.setImageResource(PainImageType.OTHER_PAIN.imagePath)
+                            TestApplication.instance.imageId = PainImageType.OTHER_PAIN.id
 
                         }
                     }
@@ -242,13 +260,58 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
         when (itemView) {
 
             //here add navigation to home screen and save action
-            R.id.action_save -> finish()
-
+            R.id.action_save -> {
+                insertDataToDatabase()
+                finish()
+            }
 
 
         }
 
         return false
+    }
+
+    private fun insertDataToDatabase() {
+        Log.i("test", "test")
+        val painDate = datelabel.text.toString()
+        val painTime = timelabel.text.toString()
+        val painType = painTypelabel.text.toString()
+        val painTypeImage = TestApplication.instance.imageId
+        val painPower = painPowerlabel.text.toString()
+        val notes = notes.text.toString()
+
+        if (inputCheck(painDate, painTime, painType, painTypeImage, painPower, notes)) {
+
+            val record = Record(0, painDate, painTime, painType, painTypeImage, painPower, notes)
+
+            mRecordViewModel.addRecord(record)
+            Toast.makeText(
+                this,
+                "Record Successfully added to Journal",
+                Toast.LENGTH_LONG
+            ).show()
+//            findNavController().navigate(R.id.action_newFragment_to_mainFragment)
+        } else {
+
+            Toast.makeText(this, "All fields must be filled in", Toast.LENGTH_LONG)
+                .show()
+
+        }
+    }
+
+    private fun inputCheck(
+        painDate: String,
+        painTime: String,
+        painType: String,
+        painTypeImage: Int,
+        painPower: String,
+        notes: String
+    ): Boolean {
+
+        return !(TextUtils.isEmpty(painDate) && TextUtils.isEmpty(painTime) && TextUtils.isEmpty(
+            painType
+        ) && TextUtils.isEmpty(painPower) && notes.isEmpty())
+
     }
 
     private fun getDateCalendar() {
