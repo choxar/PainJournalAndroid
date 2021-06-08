@@ -1,27 +1,27 @@
 package com.example.painjournal
 
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
-import android.widget.DatePicker
-import android.widget.TimePicker
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.painjournal.adapters.MainActivityAdapter
 import com.example.painjournal.databinding.ActivityMainBinding
+import com.example.painjournal.main.data.RecordViewModel
 
-class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
-    TimePickerDialog.OnTimeSetListener {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var mRecordViewModel: RecordViewModel
+    private val adapter = MainActivityAdapter()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-//        binding.bottomNavigationView.background = null
-//        binding.bottomNavigationView.menu.getItem(1).isEnabled = false
 
 
 
@@ -33,38 +33,33 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
 
         }
 
+        val recyclerView = binding.recyclerview
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
-        //binding.viewModel = viewModel
-        //binding.lifecycleOwner = this
+        mRecordViewModel = ViewModelProvider(this).get(RecordViewModel::class.java)
+        mRecordViewModel.readAllData.observe(this, Observer { record ->
 
-        binding.detailsButton.setOnClickListener {
 
-            //All actions preformed when pressing More details Button
+            adapter.setData(record)
 
-            val intent = Intent(this, DetailActivity::class.java)
-            startActivity(intent)
+            toggleEmptyView()
 
+
+        })
+
+
+    }
+
+    private fun toggleEmptyView() {
+
+        if (adapter.itemCount == 0) {
+            binding.emptyView.visibility = View.VISIBLE
+        } else {
+            binding.emptyView.visibility = View.GONE
         }
-
-
-
-//        if (dataset.isEmpty()) {
-//            binding.mainLayout.visibility = View.GONE
-//            binding.emptyView.visibility = View.VISIBLE
-//        } else {
-//            binding.mainLayout.visibility = View.VISIBLE
-//            binding.emptyView.visibility = View.GONE
-//        }
-
     }
 
-    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
-        TODO("Not yet implemented")
-    }
 
 }
 
