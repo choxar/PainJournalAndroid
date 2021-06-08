@@ -28,4 +28,13 @@ class RecordViewModel(application: Application): AndroidViewModel(application) {
 
     }
 
+    fun deleteRecord(record: Record) {
+
+        viewModelScope.launch(Dispatchers.IO) {
+
+            repository.deleteRecord(record)
+        }
+
+    }
+
 }

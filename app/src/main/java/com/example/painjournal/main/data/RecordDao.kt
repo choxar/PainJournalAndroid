@@ -1,10 +1,7 @@
 package com.example.painjournal.main.data
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface RecordDao {
@@ -14,6 +11,9 @@ interface RecordDao {
 
     @Query ("SELECT * FROM record_table ORDER BY painDate ASC")
     fun readAllData(): LiveData<List<Record>>
+
+    @Delete
+    fun deleteRecord(record: Record)
 
 
 

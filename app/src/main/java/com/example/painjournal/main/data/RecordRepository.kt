@@ -12,4 +12,10 @@ class RecordRepository(private val recordDao: RecordDao) {
 
     }
 
+    suspend fun deleteRecord(record: Record) {
+
+        recordDao.deleteRecord(record)
+
+    }
+
 }

@@ -9,7 +9,7 @@ import com.example.painjournal.main.data.Record
 import com.example.painjournal.main.data.getPainImageType
 import kotlinx.android.synthetic.main.item_record.view.*
 
-class MainActivityAdapter: RecyclerView.Adapter<MainActivityAdapter.MyViewHolder>() {
+class MainActivityAdapter(private val listener: AdapterClickListener) : RecyclerView.Adapter<MainActivityAdapter.MyViewHolder>() {
 
 
     private var recordsMainActivity = emptyList<Record>()
@@ -19,24 +19,36 @@ class MainActivityAdapter: RecyclerView.Adapter<MainActivityAdapter.MyViewHolder
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainActivityAdapter.MyViewHolder {
+    interface AdapterClickListener {
 
-        return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_record, parent, false))
+        fun onRecordClickListener(record: Record)
+
+    }
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): MainActivityAdapter.MyViewHolder {
+
+        return MyViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.item_record, parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         val currentRecord = recordsMainActivity[position]
-//        holder.itemView.painDate.text = recordsMainActivity.painDate.toString()
-//        holder.itemView.painTime.text = recordsMainActivity.painTime.toString()
-//        holder.itemView.painPower.text = recordsMainActivity.PainPower.toString()
-//        holder.itemView.painTypeLabel.text = recordsMainActivity.painType.toString()
-//        holder.itemView.painTypeImageView.text = recordsMainActivity.painTypeImage.toString()
+
+        holder.itemView.setOnClickListener {
+
+        listener.onRecordClickListener(currentRecord)
+
+        }
+
 
         val painImageType = getPainImageType(currentRecord.painTypeImage)!!
         holder.itemView.item_image.setImageResource(painImageType.imagePath)
         holder.itemView.item_text.text = currentRecord.painNotes
-
 
 
     }
@@ -47,12 +59,12 @@ class MainActivityAdapter: RecyclerView.Adapter<MainActivityAdapter.MyViewHolder
 
     }
 
-fun setData(record: List<Record>) {
+    fun setData(record: List<Record>) {
 
-this.recordsMainActivity = record
-    notifyDataSetChanged()
+        this.recordsMainActivity = record
+        notifyDataSetChanged()
 
-}
+    }
 
 
 }

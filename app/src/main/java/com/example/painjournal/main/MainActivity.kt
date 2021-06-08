@@ -9,13 +9,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.painjournal.adapters.MainActivityAdapter
 import com.example.painjournal.databinding.ActivityMainBinding
+import com.example.painjournal.main.data.Record
 import com.example.painjournal.main.data.RecordViewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MainActivityAdapter.AdapterClickListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var mRecordViewModel: RecordViewModel
-    private val adapter = MainActivityAdapter()
+    private val adapter = MainActivityAdapter(this)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,6 +59,10 @@ class MainActivity : AppCompatActivity() {
         } else {
             binding.emptyView.visibility = View.GONE
         }
+    }
+
+    override fun onRecordClickListener(record: Record) {
+        mRecordViewModel.deleteRecord(record)
     }
 
 
