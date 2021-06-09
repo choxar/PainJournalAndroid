@@ -9,7 +9,8 @@ import com.example.painjournal.main.data.Record
 import com.example.painjournal.main.data.getPainImageType
 import kotlinx.android.synthetic.main.item_record.view.*
 
-class MainActivityAdapter(private val listener: AdapterClickListener) : RecyclerView.Adapter<MainActivityAdapter.MyViewHolder>() {
+class MainActivityAdapter(private val listener: AdapterClickListener) :
+    RecyclerView.Adapter<MainActivityAdapter.MyViewHolder>() {
 
 
     private var recordsMainActivity = emptyList<Record>()
@@ -24,6 +25,8 @@ class MainActivityAdapter(private val listener: AdapterClickListener) : Recycler
         fun onRecordClickListener(record: Record)
 
     }
+
+
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -41,14 +44,20 @@ class MainActivityAdapter(private val listener: AdapterClickListener) : Recycler
 
         holder.itemView.setOnClickListener {
 
-        listener.onRecordClickListener(currentRecord)
+            listener.onRecordClickListener(currentRecord)
 
         }
 
 
         val painImageType = getPainImageType(currentRecord.painTypeImage)!!
-        holder.itemView.item_image.setImageResource(painImageType.imagePath)
-        holder.itemView.item_text.text = currentRecord.painNotes
+        //holder.itemView.item_image.setImageResource(painImageType.imagePath)
+        //holder.itemView.item_text.text = currentRecord.painNotes
+
+        holder.itemView.painDate.text = currentRecord.painDate
+        holder.itemView.painTime.text = currentRecord.painTime
+        holder.itemView.painPower.text = currentRecord.painPower
+        holder.itemView.item_painTypeLabel.text = currentRecord.painType
+        holder.itemView.painTypeImageView.setImageResource(painImageType.imagePath)
 
 
     }
@@ -66,10 +75,10 @@ class MainActivityAdapter(private val listener: AdapterClickListener) : Recycler
 
     }
 
-fun getRecord(position: Int): Record {
+    fun getRecord(position: Int): Record {
 
-    return recordsMainActivity[position]
+        return recordsMainActivity[position]
 
-}
+    }
 
 }

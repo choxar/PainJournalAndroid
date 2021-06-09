@@ -32,6 +32,7 @@
                     android:background="@color/purple_200"
                     app:titleMarginStart="90dp"
                     app:navigationIcon="@drawable/ic_close"
+                    style="@style/ThemeDetail"
                     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
 
@@ -146,13 +147,13 @@
                     android:layout_below="@+id/painType_textField"
                     android:layout_centerHorizontal="true">
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/painTypeImageView"
+                    <ImageView
+                        android:id="@+id/painTypeImageView_new"
                         android:adjustViewBounds="true"
                         android:scaleType="fitCenter"
                         android:layout_width="200dp"
                         android:layout_height="200dp"
-                        android:padding="20sp"
+                        android:padding="25sp"
                         app:shapeAppearanceOverlay="@style/roundedImage"/>
 
                 </RelativeLayout>

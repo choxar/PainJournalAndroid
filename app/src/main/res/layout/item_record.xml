@@ -2,170 +2,147 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/item_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Title" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="12dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
 
-    <ImageView
-        android:id="@+id/item_image"
-        android:layout_width="50dp"
-        android:layout_height="50dp" />
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <!--
+            In the above cardview widget
+            cardelevation property will give elevation to your card view
+            card corner radius will provide radius to your card view
+            card background color will give background color to your card view
+            card max elevation will give the cardview maximum elevation
+            card prevent corner overlap will add padding to CardView on v20 and before to prevent intersections between the Card content and rounded corners.
+            card use compact padding will add padding in API v21+ as well to have the same measurements with previous versions.
+            below are the two widgets imageview and text view we are displaying inside our card view.
+            -->
+
+            <RelativeLayout
+                android:id="@+id/date_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16sp"
+                    android:text="On:"
+                    android:textSize="20sp" />
+
+                <TextView
+
+                    android:id="@+id/painDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="175dp"
+                    android:padding="16sp"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/time_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/date_holder">
+
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16sp"
+                    android:text="At:"
+                    android:textSize="20sp" />
+
+                <TextView
+
+                    android:id="@+id/painTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="175dp"
+                    android:padding="16sp"
+                    android:textSize="20sp" />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/detail_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/time_holder">
+
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16sp"
+                    android:text="Power:"
+                    android:textSize="20sp" />
+
+                <TextView
+
+                    android:id="@+id/painPower"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="175dp"
+                    android:padding="16sp"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+
+            <ImageView
+                android:id="@+id/painTypeImageView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignBottom="@id/detail_holder"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="-1dp"
+                android:layout_marginRight="16dp"
+                style="@style/roundedImage"
+                android:padding="16sp" />
+
+            <TextView
+                android:id="@+id/item_painTypeLabel"
+                android:layout_width="145dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:gravity="center"
+                android:text="Pain Type"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>
 
-<!--<androidx.cardview.widget.CardView-->
-<!--android:layout_width="500dp"-->
-<!--android:layout_height="wrap_content"-->
-<!--android:layout_below="@id/search_container"-->
-<!--android:layout_margin="10dp"-->
-<!--app:cardBackgroundColor="@color/white"-->
-<!--app:cardCornerRadius="10dp"-->
-<!--app:cardElevation="10dp"-->
-<!--app:cardMaxElevation="12dp"-->
-<!--app:cardPreventCornerOverlap="true"-->
-<!--app:cardUseCompatPadding="true">-->
-
-<!--<RelativeLayout-->
-
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent">-->
-
-
-<!--    &lt;!&ndash;-->
-<!--    In the above cardview widget-->
-<!--    cardelevation property will give elevation to your card view-->
-<!--    card corner radius will provide radius to your card view-->
-<!--    card background color will give background color to your card view-->
-<!--    card max elevation will give the cardview maximum elevation-->
-<!--    card prevent corner overlap will add padding to CardView on v20 and before to prevent intersections between the Card content and rounded corners.-->
-<!--    card use compact padding will add padding in API v21+ as well to have the same measurements with previous versions.-->
-<!--    below are the two widgets imageview and text view we are displaying inside our card view.-->
-<!--    &ndash;&gt;-->
-
-<!--    <RelativeLayout-->
-<!--        android:id="@+id/date_holder"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-
-<!--        >-->
-
-<!--        <TextView-->
-
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:padding="16sp"-->
-<!--            android:text="On:"-->
-<!--            android:textSize="20sp" />-->
-
-<!--        <TextView-->
-
-<!--            android:id="@+id/painDate"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentEnd="true"-->
-<!--            android:layout_marginEnd="175dp"-->
-<!--            android:padding="16sp"-->
-<!--            android:textSize="16sp" />-->
-
-<!--    </RelativeLayout>-->
-
-<!--    <RelativeLayout-->
-<!--        android:id="@+id/time_holder"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@id/date_holder">-->
-
-
-<!--        <TextView-->
-
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:padding="16sp"-->
-<!--            android:text="At:"-->
-<!--            android:textSize="20sp" />-->
-
-<!--        <TextView-->
-
-<!--            android:id="@+id/painTime"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentEnd="true"-->
-<!--            android:layout_marginEnd="175dp"-->
-<!--            android:padding="16sp"-->
-<!--            android:textSize="20sp" />-->
-
-
-<!--    </RelativeLayout>-->
-
-
-<!--    <RelativeLayout-->
-<!--        android:id="@+id/detail_holder"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@id/time_holder">-->
-
-
-<!--        <TextView-->
-
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:padding="16sp"-->
-<!--            android:text="Power of pain:"-->
-<!--            android:textSize="20sp" />-->
-
-<!--        <TextView-->
-
-<!--            android:id="@+id/painPower"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentEnd="true"-->
-<!--            android:layout_marginEnd="175dp"-->
-<!--            android:padding="16sp"-->
-<!--            android:textSize="16sp" />-->
-
-<!--    </RelativeLayout>-->
-
-
-<!--    <ImageView-->
-<!--        android:id="@+id/painTypeImageView"-->
-<!--        android:layout_width="150dp"-->
-<!--        android:layout_height="150dp"-->
-<!--        android:layout_alignBottom="@id/detail_holder"-->
-<!--        android:layout_alignParentEnd="true"-->
-<!--        android:layout_marginTop="-1dp"-->
-<!--        android:layout_marginRight="16dp"-->
-<!--        android:padding="16sp" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/painTypeLabel"-->
-<!--        android:layout_width="145dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_alignParentRight="true"-->
-<!--        android:layout_marginRight="15dp"-->
-<!--        android:gravity="center"-->
-<!--        android:text="Pain Type"-->
-<!--        android:textSize="20sp"-->
-<!--        android:textStyle="bold" />-->
-
-<!--    <Button-->
-
-<!--        android:id="@+id/details_button"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@id/detail_holder"-->
-<!--        android:layout_alignParentEnd="true"-->
-<!--        android:foregroundTint="@color/black"-->
-<!--        android:text="More Details"-->
-<!--        style="?android:attr/borderlessButtonStyle"-->
-<!--        android:textSize="12sp" />-->
-
-
-<!--</RelativeLayout>-->
-
-
-<!--</androidx.cardview.widget.CardView>-->

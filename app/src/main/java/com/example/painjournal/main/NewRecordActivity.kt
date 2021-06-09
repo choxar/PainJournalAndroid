@@ -16,7 +16,6 @@ import com.example.painjournal.main.data.Record
 import com.example.painjournal.main.data.RecordViewModel
 import kotlinx.android.synthetic.main.detail_main.*
 import kotlinx.android.synthetic.main.new_main.*
-import kotlinx.android.synthetic.main.new_main.painTypeImageView
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -53,8 +52,8 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
             "Choose Power of Pain",
             "Pain Bearable",
             "Moderate Pain",
-            "Serve Pain",
-            "Very Serve Pain",
+            "Severe Pain",
+            "Very Severe Pain",
             "Worst Pain Possible"
 
         )
@@ -94,7 +93,6 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
 
         binding.datePickerEditText.text = ZonedDateTime.now().format(dateFormatter)
 
-        //binding.datePickerEditText.setText("$savedDay-$savedMonth-$savedYear")
 
         binding.timePickerEditText.text = ZonedDateTime.now().format(timeFormatter)
 
@@ -140,19 +138,19 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
 
                         0 -> {
 
-                            painTypeImageView.setImageResource(PainImageType.OTHER.imagePath)
+                            binding.painTypeImageViewNew.setImageResource(PainImageType.OTHER.imagePath)
                             TestApplication.instance.imageId = PainImageType.OTHER.id
 
                         }
                         1 -> {
-                            painTypeImageView.setImageResource(PainImageType.BACK_PAIN.imagePath)
+                            binding.painTypeImageViewNew.setImageResource(PainImageType.BACK_PAIN.imagePath)
                             TestApplication.instance.imageId = PainImageType.BACK_PAIN.id
 
                         }
 
                         2 -> {
 
-                            painTypeImageView.setImageResource(PainImageType.HEADACHE.imagePath)
+                            binding.painTypeImageViewNew.setImageResource(PainImageType.HEADACHE.imagePath)
                             TestApplication.instance.imageId = PainImageType.HEADACHE.id
 
 
@@ -160,7 +158,7 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
 
                         3 -> {
 
-                            painTypeImageView.setImageResource(PainImageType.NECK_PAIN.imagePath)
+                            binding.painTypeImageViewNew.setImageResource(PainImageType.NECK_PAIN.imagePath)
                             TestApplication.instance.imageId = PainImageType.NECK_PAIN.id
 
 
@@ -168,7 +166,7 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
 
                         4 -> {
 
-                            painTypeImageView.setImageResource(PainImageType.MUSCLE_PAIN.imagePath)
+                            binding.painTypeImageViewNew.setImageResource(PainImageType.MUSCLE_PAIN.imagePath)
                             TestApplication.instance.imageId = PainImageType.MUSCLE_PAIN.id
 
 
@@ -176,7 +174,7 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
 
                         5 -> {
 
-                            painTypeImageView.setImageResource(PainImageType.STOMATCHACHE.imagePath)
+                            binding.painTypeImageViewNew.setImageResource(PainImageType.STOMATCHACHE.imagePath)
                             TestApplication.instance.imageId = PainImageType.STOMATCHACHE.id
 
 
@@ -184,7 +182,7 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
 
                         6 -> {
 
-                            painTypeImageView.setImageResource(PainImageType.CHEST_PAIN.imagePath)
+                            binding.painTypeImageViewNew.setImageResource(PainImageType.CHEST_PAIN.imagePath)
                             TestApplication.instance.imageId = PainImageType.CHEST_PAIN.id
 
 
@@ -192,7 +190,7 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
 
                         7 -> {
 
-                            painTypeImageView.setImageResource(PainImageType.HIP_PAIN.imagePath)
+                            binding.painTypeImageViewNew.setImageResource(PainImageType.HIP_PAIN.imagePath)
                             TestApplication.instance.imageId = PainImageType.HIP_PAIN.id
 
 
@@ -200,21 +198,21 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
 
                         8 -> {
 
-                            painTypeImageView.setImageResource(PainImageType.JOINT_PAIN.imagePath)
+                            binding.painTypeImageViewNew.setImageResource(PainImageType.JOINT_PAIN.imagePath)
                             TestApplication.instance.imageId = PainImageType.JOINT_PAIN.id
 
                         }
 
                         9 -> {
 
-                            painTypeImageView.setImageResource(PainImageType.NERVE_PAIN.imagePath)
+                            binding.painTypeImageViewNew.setImageResource(PainImageType.NERVE_PAIN.imagePath)
                             TestApplication.instance.imageId = PainImageType.NERVE_PAIN.id
 
                         }
 
                         10 -> {
 
-                            painTypeImageView.setImageResource(PainImageType.SORE_THROAT.imagePath)
+                            binding.painTypeImageViewNew.setImageResource(PainImageType.SORE_THROAT.imagePath)
                             TestApplication.instance.imageId = PainImageType.SORE_THROAT.id
 
                         }
@@ -222,7 +220,7 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
                         11 -> {
 
 
-                            painTypeImageView.setImageResource(PainImageType.OTHER_PAIN.imagePath)
+                            binding.painTypeImageViewNew.setImageResource(PainImageType.OTHER_PAIN.imagePath)
                             TestApplication.instance.imageId = PainImageType.OTHER_PAIN.id
 
                         }
