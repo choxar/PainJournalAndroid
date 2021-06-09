@@ -30,7 +30,7 @@
                 style="@style/ThemeDetail"
                 android:layout_height="wrap_content"
                 app:title="Details of Your Record"
-                android:background="@color/purple_200"
+                android:background="@color/navy_light_theme"
                 app:navigationIcon="@drawable/ic_back"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
@@ -57,26 +57,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:textColor="@color/design_default_color_on_secondary"
                     android:text="Pain Type"
                     android:padding="5sp"
                     android:textSize="20sp"
                     android:textStyle="bold"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/painPower_holder">
-
-                <TextView
-                    android:id="@+id/painPower_second"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Pain Power"
-                    android:textSize="20sp"/>
 
             </RelativeLayout>
 
@@ -87,12 +72,12 @@
                 android:layout_below="@id/painPower_holder">
 
                 <TextView
-
                     android:id="@+id/notes_detail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left"
-                    android:padding="50sp"
+                    android:padding="20dp"
+                    android:textColor="@color/design_default_color_on_secondary"
                     android:text="Description of pain a ot of text blalalalalalallalal"
                     android:textSize="20sp"/>
 
@@ -112,11 +97,13 @@
                     android:layout_height="wrap_content"
                     android:padding="16sp"
                     android:text="On:"
+                    android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="20sp" />
 
                 <TextView
 
                     android:id="@+id/painDate"
+                    android:textColor="@color/design_default_color_on_secondary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -138,6 +125,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="16sp"
+                    android:textColor="@color/design_default_color_on_secondary"
                     android:text="At:"
                     android:textSize="20sp" />
 
@@ -148,6 +136,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="175dp"
+                    android:textColor="@color/design_default_color_on_secondary"
                     android:padding="16sp"
                     android:textSize="20sp" />
 
@@ -168,6 +157,7 @@
                     android:layout_height="wrap_content"
                     android:padding="16sp"
                     android:text="I had:"
+                    android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="20sp" />
 
                 <TextView
@@ -178,12 +168,13 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="175dp"
                     android:padding="16sp"
+                    android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="20sp" />
 
             </RelativeLayout>
 
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/painTypeImageView_detail"
                 android:layout_below="@id/toolbar"
                 android:layout_width="150dp"
@@ -195,6 +186,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="5dp"
                 android:adjustViewBounds="true"
+                android:padding="10dp"
                 app:shapeAppearanceOverlay="@style/roundedImage" />
 
 

@@ -50,11 +50,11 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
 
         val painPower = arrayOf(
             "Choose Power of Pain",
-            "Pain Bearable",
-            "Moderate Pain",
-            "Severe Pain",
-            "Very Severe Pain",
-            "Worst Pain Possible"
+            "Bearable",
+            "Moderate",
+            "Severe",
+            "Very Severe",
+            "Worst"
 
         )
         arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, painPower)

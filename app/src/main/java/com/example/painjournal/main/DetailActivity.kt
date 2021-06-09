@@ -26,7 +26,6 @@ class DetailActivity : AppCompatActivity() {
         binding.painTypeLabel.text = record!!.painType
         binding.painPower.text = record!!.painPower
         binding.notesDetail.text = record!!.painNotes
-        binding.painPowerSecond.text = record!!.painPower
 
 
         setSupportActionBar(binding.toolbar)

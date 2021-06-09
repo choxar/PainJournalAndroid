@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_height="200dp"
         android:layout_margin="10dp"
-        app:cardBackgroundColor="@color/white"
+        app:cardBackgroundColor="@color/design_default_color_on_primary"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
         app:cardMaxElevation="12dp"
@@ -45,7 +44,8 @@
                     android:layout_height="wrap_content"
                     android:padding="16sp"
                     android:text="On:"
-                    android:textSize="20sp" />
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textSize="16dp" />
 
                 <TextView
 
@@ -55,7 +55,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="175dp"
                     android:padding="16sp"
-                    android:textSize="16sp" />
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textSize="16dp" />
 
             </RelativeLayout>
 
@@ -72,7 +73,8 @@
                     android:layout_height="wrap_content"
                     android:padding="16sp"
                     android:text="At:"
-                    android:textSize="20sp" />
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textSize="16dp" />
 
                 <TextView
 
@@ -82,7 +84,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="175dp"
                     android:padding="16sp"
-                    android:textSize="20sp" />
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textSize="16dp" />
 
 
             </RelativeLayout>
@@ -101,7 +104,8 @@
                     android:layout_height="wrap_content"
                     android:padding="16sp"
                     android:text="Power:"
-                    android:textSize="20sp" />
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textSize="16dp" />
 
                 <TextView
 
@@ -111,12 +115,13 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="175dp"
                     android:padding="16sp"
-                    android:textSize="16sp" />
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textSize="16dp" />
 
             </RelativeLayout>
 
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/painTypeImageView"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
@@ -124,18 +129,19 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="-1dp"
                 android:layout_marginRight="16dp"
-                style="@style/roundedImage"
-                android:padding="16sp" />
+                android:padding="16sp"
+                app:shapeAppearanceOverlay="@style/roundedImage" />
 
             <TextView
                 android:id="@+id/item_painTypeLabel"
-                android:layout_width="145dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="15dp"
                 android:gravity="center"
                 android:text="Pain Type"
-                android:textSize="20sp"
+                android:textSize="16dp"
+                android:textColor="@color/design_default_color_on_secondary"
                 android:textStyle="bold" />
 
 

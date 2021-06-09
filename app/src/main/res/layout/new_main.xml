@@ -29,10 +29,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:title="New Record"
-                    android:background="@color/purple_200"
+                    android:background="@color/navy_light_theme"
                     app:titleMarginStart="90dp"
+                    app:titleTextColor="@color/white"
                     app:navigationIcon="@drawable/ic_close"
-                    style="@style/ThemeDetail"
+                    style="@style/ThemeNewRecord"
                     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
 
@@ -75,7 +76,7 @@
                         android:layout_marginEnd="-11dp"
                         android:hint="Enter Date of Pain"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="20sp"
                         android:maxLines="1"
                         android:padding="16sp"
                         android:singleLine="true" />
@@ -106,7 +107,7 @@
                         android:layout_marginEnd="-11dp"
                         android:hint="Enter Time of Pain"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="20sp"
                         android:maxLines="1"
                         android:padding="16dp"
                         android:singleLine="true" />
@@ -147,7 +148,7 @@
                     android:layout_below="@+id/painType_textField"
                     android:layout_centerHorizontal="true">
 
-                    <ImageView
+                    <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/painTypeImageView_new"
                         android:adjustViewBounds="true"
                         android:scaleType="fitCenter"
@@ -205,7 +206,6 @@
                         android:layout_below="@id/painDesc_label"
                         android:layout_marginEnd="-11dp"
                         android:hint="Enter some notes..."
-                        android:maxLines="1"
                         android:padding="16sp"
                         android:gravity="top|left"/>
 
@@ -225,9 +225,10 @@
         android:src="@drawable/ic_done"
         android:tint="@android:color/white"
         app:tint="@android:color/white"
-        android:backgroundTint="@color/purple_200"
+        android:backgroundTint="@color/navy_light_theme"
         android:layout_alignParentEnd="true"
         android:layout_margin="16dp"
+        app:borderWidth="0dp"
         android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>
