@@ -51,13 +51,13 @@
         android:layout_height="match_parent"
         android:layout_below="@id/toolbar" />
 
-    <TextView
+    <ImageView
         android:id="@+id/empty_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="No Data"
+        android:src="@drawable/empty_view"
         android:textSize="35sp"
         android:visibility="gone" />
 

@@ -121,7 +121,7 @@
             </RelativeLayout>
 
 
-            <com.google.android.material.imageview.ShapeableImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/painTypeImageView"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
@@ -130,7 +130,7 @@
                 android:layout_marginTop="-1dp"
                 android:layout_marginRight="16dp"
                 android:padding="16sp"
-                app:shapeAppearanceOverlay="@style/roundedImage" />
+                app:shapeAppearanceOverlay="@style/roundedImage"/>
 
             <TextView
                 android:id="@+id/item_painTypeLabel"

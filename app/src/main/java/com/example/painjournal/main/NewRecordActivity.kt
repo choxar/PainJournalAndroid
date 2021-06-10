@@ -16,6 +16,7 @@ import com.example.painjournal.main.data.Record
 import com.example.painjournal.main.data.RecordViewModel
 import kotlinx.android.synthetic.main.detail_main.*
 import kotlinx.android.synthetic.main.new_main.*
+import java.time.LocalTime
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -26,8 +27,9 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
 
     private lateinit var binding: NewMainBinding
     private lateinit var mRecordViewModel: RecordViewModel
-    private lateinit var arrayAdapter: ArrayAdapter<String>
 
+    val dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+    val timeFormatter = DateTimeFormatter.ofPattern("HH:mm")
 
     var day = 0
     var month = 0
@@ -48,16 +50,7 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
 
         mRecordViewModel = ViewModelProvider(this).get(RecordViewModel::class.java)
 
-        val painPower = arrayOf(
-            "Choose Power of Pain",
-            "Bearable",
-            "Moderate",
-            "Severe",
-            "Very Severe",
-            "Worst"
 
-        )
-        arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, painPower)
         val intent = Intent(this, MainActivity::class.java)
 
 
@@ -87,8 +80,6 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
         savedMinute = cal.get(Calendar.MINUTE)
 
         //val localDateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssXXX")
-        val dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
-        val timeFormatter = DateTimeFormatter.ofPattern("HH:mm")
 
 
         binding.datePickerEditText.text = ZonedDateTime.now().format(dateFormatter)
@@ -101,7 +92,6 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
         pickTime()
 
 
-        binding.spinnerPainPower.adapter = arrayAdapter
         binding.spinnerPainPower.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
@@ -350,7 +340,7 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
         getDateCalendar()
 
         //TimePickerDialog(this, this,hour,minute, true).show()
-        binding.datePickerEditText.setText("$savedDay-$savedMonth-$savedYear")
+        binding.datePickerEditText.text = "$savedDay-$savedMonth-$savedYear"
 
     }
 
@@ -359,7 +349,9 @@ class NewRecordActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
         savedHour = hourOfDay
         savedMinute = minute
 
-        binding.timePickerEditText.setText("$savedHour:$savedMinute")
+        val formattedTime = LocalTime.of(hourOfDay, minute).format(timeFormatter)
+
+        binding.timePickerEditText.text = formattedTime
     }
 
 

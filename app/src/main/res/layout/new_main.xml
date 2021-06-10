@@ -70,6 +70,10 @@
 
                     <TextView
                         android:id="@+id/datePickerEditText"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/custom_input"
+                        android:drawableStart="@drawable/ic_baseline_date_range_24"
+                        android:drawablePadding="12dp"
                         android:layout_width="400dp"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/datelabel"
@@ -100,7 +104,11 @@
                         android:textSize="20sp" />
 
                     <TextView
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/custom_input"
                         android:id="@+id/timePickerEditText"
+                        android:drawableStart="@drawable/ic_time"
+                        android:drawablePadding="12dp"
                         android:layout_width="400dp"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/timelabel"
@@ -130,11 +138,16 @@
                         android:textSize="20sp"
                         android:textColor="@color/black"/>
 
+
+
                     <Spinner
+                        android:layout_centerHorizontal="true"
+                        android:drawablePadding="12dp"
                         android:layout_below="@id/painTypelabel"
                         android:id="@+id/spinnerPainType"
                         android:entries="@array/PainType"
                         android:layout_width="400dp"
+                        android:background="@drawable/custom_input"
                         android:layout_height="wrap_content"
                         style="@style/text"/>
 
@@ -143,6 +156,7 @@
 
                 <RelativeLayout
                     android:id="@+id/imageView"
+                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/painType_textField"
@@ -154,7 +168,6 @@
                         android:scaleType="fitCenter"
                         android:layout_width="200dp"
                         android:layout_height="200dp"
-                        android:padding="25sp"
                         app:shapeAppearanceOverlay="@style/roundedImage"/>
 
                 </RelativeLayout>
@@ -176,6 +189,8 @@
 
                     <Spinner
                         android:layout_below="@id/painPowerlabel"
+                        android:background="@drawable/custom_input"
+                        android:layout_centerHorizontal="true"
                         android:id="@+id/spinnerPainPower"
                         android:entries="@array/PainPower"
                         android:layout_width="400dp"
@@ -200,14 +215,18 @@
                         android:textSize="20sp" />
 
                     <EditText
+                        android:layout_centerHorizontal="true"
                         android:id="@+id/notes"
+                        android:drawableStart="@drawable/ic_notes"
+                        android:drawablePadding="12dp"
                         android:layout_width="400dp"
-                        android:layout_height="250dp"
+                        android:layout_height="wrap_content"
                         android:layout_below="@id/painDesc_label"
                         android:layout_marginEnd="-11dp"
                         android:hint="Enter some notes..."
                         android:padding="16sp"
-                        android:gravity="top|left"/>
+                        android:gravity="top|left"
+                        android:background="@drawable/custom_input"/>
 
                 </RelativeLayout>
 

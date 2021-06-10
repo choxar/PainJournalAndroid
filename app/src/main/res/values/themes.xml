@@ -37,6 +37,7 @@
 
         <item name="android:textSize">20sp</item>
         <item name="android:padding">16sp</item>
+        <item name="android:textColor">@color/navy_light_theme</item>
 
     </style>
 
@@ -50,9 +51,13 @@
     <style name="roundedImage">
 
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">30dp</item>
+        <item name="cornerSize">35dp</item>
 
 
+    </style>
+
+    <style name="SpinnerTheme" parent="android:Widget.Spinner">
+        <item name="android:background">@drawable/custom_input_type</item>
     </style>
 
 
